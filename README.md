@@ -19,7 +19,7 @@ This project was completed as part of an internship with Theportfolyo company on
 
 To use this project, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/Roshnnnnn/ThePortfolyo.git`
+1. Clone the repository: `git clone https://github.com/Roshnnnnn/Portfolyo.git`
 2. Navigate to the project directory: `cd project-name`
 
 ## Credits
