@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchData } from "../../pages/api/hello";
 
 const ContactForm = () => {

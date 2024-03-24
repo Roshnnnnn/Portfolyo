@@ -91,46 +91,9 @@ const Contact = () => {
               <ContactForm />
             </div>
             <div className="short wow fadeInUp" data-wow-duration="1s">
-              <div className="left">
-                <span>
-                  {/* <a href="mailto:infomaya.tonni@gmail.com">{social.email}</a> */}
-                  {/* <img className="svg" src="img/svg/vector3.svg" alt="" /> */}
-                </span>
-              </div>
+              {/* <div className="left"></div> */}
               <div className="right">
-                <div className="social">
-                  {/* <div>
-                    {media.map((item, index) => (
-                      <a
-                        href={item.url}
-                        key={index}
-                        style={{ marginRight: "20px" }}
-                      >
-                        <img
-                          src={item.image.url}
-                          alt={item.platform}
-                          style={{
-                            width: "40px",
-                            height: "40px",
-                          }}
-                        />
-                      </a>
-                    ))}
-                  </div> */}
-                </div>
-                {/* <div className="copyright">
-                  <p>
-                    © {new Date().getFullYear()} by{" "}
-                    <a
-                      href="https://themeforest.net/user/codeefly"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Codeefly.
-                    </a>{" "}
-                    All rights reserved.
-                  </p>
-                </div> */}
+                <div className="social"></div>
               </div>
             </div>
           </div>
