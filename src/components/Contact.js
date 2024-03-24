@@ -1,27 +1,27 @@
 import { Fragment, useState, useEffect } from "react";
 import Counter from "./Counter";
-import { fetchData } from "../../pages/api/hello";
+// import { fetchData } from "../../pages/api/hello";
 import ContactPopup from "./popup/ContactPopup";
 import ContactForm from "./ContactForm";
 
 const Contact = () => {
   const [active, setActive] = useState(false);
-  const [media, setMedia] = useState([]);
-  const [social, setSocial] = useState([]);
+  // const [media, setMedia] = useState([]);
+  // const [social, setSocial] = useState([]);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const data = await fetchData();
-        setMedia(data.social_handles);
-        setSocial(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const data = await fetchData();
+  //       setMedia(data.social_handles);
+  //       setSocial(data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
 
-    fetchUserData();
-  }, []);
+  //   fetchUserData();
+  // }, []);
 
   return (
     <Fragment>
@@ -93,13 +93,13 @@ const Contact = () => {
             <div className="short wow fadeInUp" data-wow-duration="1s">
               <div className="left">
                 <span>
-                  <a href="mailto:infomaya.tonni@gmail.com">{social.email}</a>
-                  <img className="svg" src="img/svg/vector3.svg" alt="" />
+                  {/* <a href="mailto:infomaya.tonni@gmail.com">{social.email}</a> */}
+                  {/* <img className="svg" src="img/svg/vector3.svg" alt="" /> */}
                 </span>
               </div>
               <div className="right">
                 <div className="social">
-                  <div>
+                  {/* <div>
                     {media.map((item, index) => (
                       <a
                         href={item.url}
@@ -116,9 +116,9 @@ const Contact = () => {
                         />
                       </a>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
-                <div className="copyright">
+                {/* <div className="copyright">
                   <p>
                     © {new Date().getFullYear()} by{" "}
                     <a
@@ -130,7 +130,7 @@ const Contact = () => {
                     </a>{" "}
                     All rights reserved.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

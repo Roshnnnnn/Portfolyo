@@ -44,7 +44,6 @@ const Home = () => {
               alt="User Avatar"
               style={{
                 overflow: "hidden",
-                filter: "grayscale(100%)", // Convert to grayscale
                 clipPath: "polygon(0 0, 100% 0, 100% 90%, 0 100%)", // Cut the top part
               }}
             />

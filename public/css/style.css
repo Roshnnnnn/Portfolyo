@@ -3874,3 +3874,47 @@ h6 {
     font-size: 30px;
   }
 }
+
+/* /* Contact */
+
+/* .contactDesc {
+  padding: 1rem;
+  font-size: medium;
+  font-weight: 300;
+}
+
+.contactForm {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  max-width: 60rem;
+}
+
+.name,
+.email,
+.msg {
+  font-size: medium;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #ab5429;
+  border-radius: 0.5rem;
+  background: #ab5429;
+}
+
+.submitBtn {
+  background: white;
+  border: none;
+  border-radius: 0.5rem;
+  margin: 2rem;
+  padding: 0.75rem 3.5rem;
+}
+
+.submitBtn:hover {
+  background: #ab5429;
+  color: whitesmoke;
+} */
