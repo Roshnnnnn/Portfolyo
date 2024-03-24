@@ -91,7 +91,6 @@ const Contact = () => {
               <ContactForm />
             </div>
             <div className="short wow fadeInUp" data-wow-duration="1s">
-              {/* <div className="left"></div> */}
               <div className="right">
                 <div className="social"></div>
               </div>

@@ -951,12 +951,12 @@ h6 {
 }
 
 .dodo_progress ul {
-  margin: 100px auto 0 auto; /* Center the ul element horizontally */
+  /* margin: 100px auto 0 auto; */
+  margin: auto;
   list-style-type: none;
-  padding: 0; /* Remove default padding */
-  display: grid; /* Use CSS Grid for layout */
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Default to 3 columns */
-  gap: 20px; /* Add gap between grid items */
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .dodo_progress ul li {
