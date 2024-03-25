@@ -776,12 +776,9 @@ h6 {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  ); /* Grid with flexible columns */
-  gap: 10px; /* Gap between grid items */
-  justify-items: center; /* Center items horizontally */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  justify-items: center;
 }
 
 /* Individual skill item */
@@ -795,28 +792,40 @@ h6 {
   align-items: center;
 }
 
-/* Skill percentage bar */
 .skill-progress {
-  width: 100px; /* Adjust width as needed */
-  height: 10px; /* Adjust height as needed */
-  background-color: #f0f0f0; /* Background color for progress bar */
-  border-radius: 5px; /* Rounded corners */
+  width: 100px;
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
   margin-right: 10px;
-  overflow: hidden; /* Ensure the progress fill doesn't overflow */
+  overflow: hidden;
 }
 
-/* Skill percentage bar fill */
 .skill-progress-fill {
   height: 100%;
   border-radius: 5px;
-  background-color: #4caf50; /* Green color for filled portion */
-  animation: animateProgress 2s ease forwards; /* Animation for smooth progress */
+  background-color: #4caf50;
+  width: 0; /* Start with 0 width */
+  /* Add animation properties */
+  -webkit-animation: wow 2s cubic-bezier(0.165, 0.84, 0.44, 1); /* Safari 4+ */
+  -moz-animation: wow 2s cubic-bezier(0.165, 0.84, 0.44, 1); /* Fx 5+ */
+  animation: wow 2s cubic-bezier(0.165, 0.84, 0.44, 1); /* IE 10+ */
+}
+
+/* Define keyframes */
+@keyframes wow {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 /* Skill icon */
 .skill-icon {
-  width: 30px; /* Adjust width as needed */
-  height: 30px; /* Adjust height as needed */
+  width: 30px;
+  height: 30px;
   margin-right: 5px;
 }
 
@@ -827,8 +836,8 @@ h6 {
 
 /* Animation for smooth progress */
 @keyframes animateProgress {
-  from {
-    width: 0%; /* Start from 0% */
+  to {
+    width: var(--percentage, 0%);
   }
 }
 
@@ -951,12 +960,12 @@ h6 {
 }
 
 .dodo_progress ul {
-  /* margin: 100px auto 0 auto; */
-  margin: auto;
+  margin: 100px auto 0 auto; /* Center the ul element horizontally */
   list-style-type: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 0; /* Remove default padding */
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Default to 3 columns */
+  gap: 20px; /* Add gap between grid items */
 }
 
 .dodo_progress ul li {
@@ -3874,47 +3883,3 @@ h6 {
     font-size: 30px;
   }
 }
-
-/* /* Contact */
-
-/* .contactDesc {
-  padding: 1rem;
-  font-size: medium;
-  font-weight: 300;
-}
-
-.contactForm {
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90vw;
-  max-width: 60rem;
-}
-
-.name,
-.email,
-.msg {
-  font-size: medium;
-  width: 100%;
-  max-width: 40rem;
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
-  color: #ab5429;
-  border-radius: 0.5rem;
-  background: #ab5429;
-}
-
-.submitBtn {
-  background: white;
-  border: none;
-  border-radius: 0.5rem;
-  margin: 2rem;
-  padding: 0.75rem 3.5rem;
-}
-
-.submitBtn:hover {
-  background: #ab5429;
-  color: whitesmoke;
-} */

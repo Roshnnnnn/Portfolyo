@@ -71,9 +71,18 @@ const About = () => {
                       data-value={item?.percentage}
                     >
                       <div
-                        className="skill-progress-fill"
+                        className="skill-progress-fill bar open"
                         style={{ width: `${item?.percentage}%` }}
-                      ></div>
+                      >
+                        <div className="progress-inner">
+                          <div className="background">
+                            <div
+                              className="bar open"
+                              style={{ width: `${item?.percentage}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div>
                       <img
