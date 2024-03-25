@@ -30,8 +30,12 @@ const Portfolio = () => {
             .filter((project) => project.enabled === true)
             .sort((a, b) => a.sequence - b.sequence)
         );
-        const imageUrls = data?.projects.map((project) => project?.image.url);
-        setImageURL(imageUrls);
+        if (projects?.image && projects?.image?.url) {
+          setImageURL(projects);
+        } else {
+          console.error("Avatar URL not found in data:", data);
+        }
+        setImageURL(imageURL);
         setLoading(false);
       } catch (error) {
         setError("Error fetching Image. Please try again later.");
@@ -49,7 +53,7 @@ const Portfolio = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <DetailsPopup
         show={activeDetailsPopup}
         close={() => setActiveDetailsPopup(false)}
@@ -120,7 +124,7 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 
