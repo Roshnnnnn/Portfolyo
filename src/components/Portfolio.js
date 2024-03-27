@@ -1,70 +1,44 @@
-import React, { Fragment, useEffect, useState } from "react";
-import Isotope from "isotope-layout";
+import { useState, useEffect } from "react";
 import { fetchData } from "../../pages/api/hello";
 import DetailsPopup from "./popup/DetailsPopup";
 
 const Portfolio = () => {
-  const [activeDetailsPopup, setActiveDetailsPopup] = useState(false);
   const [user, setUser] = useState([]);
-  const [imageURL, setImageURL] = useState([]);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState("");
-  const [selectedTitle, setSelectedTitle] = useState("");
+  const [error, setError] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [activeDetailsPopup, setActiveDetailsPopup] = useState(false);
 
-  // Isotope
+  const fetchUserData = async () => {
+    try {
+      const data = await fetchData();
+      setUser(
+        data.projects
+          .filter((pro) => pro.enabled === true)
+          .sort((a, b) => a.sequence - b.sequence)
+      );
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      new Isotope(".gallery_zoom", {
-        itemSelector: ".grid-item",
-      });
-    }, 500);
-  }, []);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const data = await fetchData();
-        setUser(
-          data.projects
-            .filter((project) => project.enabled === true)
-            .sort((a, b) => a.sequence - b.sequence)
-        );
-        if (projects?.image && projects?.image?.url) {
-          setImageURL(projects);
-        } else {
-          console.error("Avatar URL not found in data:", data);
-        }
-        setImageURL(imageURL);
-        setLoading(false);
-      } catch (error) {
-        setError("Error fetching Image. Please try again later.");
-        setLoading(false);
-      }
-    };
-
     fetchUserData();
   }, []);
 
-  const openDetailsPopup = (imageUrl, title) => {
-    setSelectedImage(imageUrl);
-    setSelectedTitle(title);
+  const openModal = (project) => {
+    setSelectedProject(project);
     setActiveDetailsPopup(true);
   };
 
   return (
-    <>
-      <DetailsPopup
-        show={activeDetailsPopup}
-        close={() => setActiveDetailsPopup(false)}
-        imageURL={selectedImage}
-        title={selectedTitle}
-        error={error}
-      />
-      <div className="tonni_tm_section" id="portfolio">
+    <div>
+      <div className="tonni_tm_section">
         <div className="tonni_tm_portfolio">
           <div className="container">
-            <div className="tonni_tm_main_title" data-type="centered">
+            <div className="tonni_tm_main_title">
               <div className="title">
                 <h3>Latest Projects</h3>
               </div>
@@ -76,55 +50,45 @@ const Portfolio = () => {
               </div>
             </div>
             {loading ? (
-              <div>Loading...</div>
+              <div>Loading....</div>
             ) : (
-              <div
-                className="portfolio_list wow fadeInUp"
-                data-wow-duration="1s"
-              >
-                <ul className="gallery_zoom grid">
-                  {user.map((project, index) => (
-                    <li className="grid-sizer" key={project._id}>
-                      <div
-                        className="list_inner"
-                        onClick={() =>
-                          openDetailsPopup(imageURL[index], project.title)
-                        }
-                      >
-                        <div className="image">
-                          <div>
-                            {error ? (
-                              <div>{error}</div>
-                            ) : (
-                              <>
-                                <img src={imageURL[index]} alt="" />
-                                <div
-                                  className="main"
-                                  data-img-url={project.image.url}
-                                />
-                              </>
-                            )}
-                          </div>
-                        </div>
-                        <div className="details">
-                          <span className="category">{project.sequence}</span>
-                          <h3 className="title">{project.title}</h3>
-                          <img
-                            className="svg"
-                            src="img/svg/vector5.svg"
-                            alt=""
-                          />
-                        </div>
+              <div className="portfolio_list wow fadeInUp">
+                {user.map((project) => (
+                  <div className="grid-sizer" key={project._id}>
+                    <div
+                      className="list_inner"
+                      onClick={() => openModal(project)}
+                    >
+                      <div className="image">
+                        {project.image && project.image.url ? (
+                          <img src={project.image.url} />
+                        ) : (
+                          <div>Error: Image not available</div>
+                        )}
+                        <div
+                          className="main"
+                          data-img-url={project.image.url}
+                        />
                       </div>
-                    </li>
-                  ))}
-                </ul>
+                      <div className="details">
+                        <span className="category">{project.sequence}</span>
+                        <h3 className="title">{project.title}</h3>
+                        <img className="svg" src="img/svg/vector5.svg" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>
         </div>
       </div>
-    </>
+      <DetailsPopup
+        show={activeDetailsPopup}
+        close={() => setActiveDetailsPopup(false)}
+        project={selectedProject}
+      />
+    </div>
   );
 };
 

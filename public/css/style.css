@@ -976,8 +976,6 @@ h6 {
 .dodo_progress ul li .list_inner {
   width: 100%;
   height: auto;
-  clear: both;
-  position: relative;
 }
 
 @media screen and (max-width: 999px) {
@@ -1236,12 +1234,32 @@ h6 {
   padding-top: 110px;
 }
 .tonni_tm_portfolio .portfolio_list {
-  width: 100%;
-  height: auto;
-  clear: both;
-  float: left;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row by default */
+  grid-gap: 3rem; /* spacing between grid items */
   padding-top: 50px;
 }
+
+/* Adjust grid for medium screens */
+@media screen and (max-width: 768px) {
+  .tonni_tm_portfolio .portfolio_list {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 items per row for medium screens */
+  }
+}
+
+/* Adjust grid for small screens */
+@media screen and (max-width: 480px) {
+  .tonni_tm_portfolio .portfolio_list {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* 1 item per row for small screens */
+  }
+}
+
 .tonni_tm_portfolio .portfolio_list ul {
   margin: 0px 0px 0px -30px;
   list-style-type: none;
