@@ -61,7 +61,9 @@ const Portfolio = () => {
                     >
                       <div className="image">
                         {project.image && project.image.url ? (
-                          <img src={project.image.url} />
+                          <div className="image-wrapper">
+                            <img src={project.image.url} className="zoom" />
+                          </div>
                         ) : (
                           <div>Error: Image not available</div>
                         )}
